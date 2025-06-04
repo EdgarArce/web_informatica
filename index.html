@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Servicio Técnico de PC y Notebooks</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>Servicio Técnico Profesional</h1>
+    <p>La Solución sin salir de su hogar</p>
+  </header>
+
+  <section class="servicios">
+    <h2><i class="fas fa-tools"></i> Nuestros Servicios</h2>
+    <ul>
+      <li><i class="fas fa-laptop-medical"></i> Reparación de Pc´s y Notebook</li>
+      <li><i class="fas fa-screwdriver-wrench"></i> Reparación de Tv Led y Smart</li>
+      <li><i class="fas fa-microchip"></i> Reemplazo de Hardware y Software</li>
+      <li><i class="fas fa-windows"></i> Formateo y reinstalación de Windows</li>
+      <li><i class="fas fa-shield-alt"></i> Eliminación de virus y optimización</li>
+      <li><i class="fas fa-shield-alt"></i> Recuperación de archivos y contraseñas windows</li>
+    </ul>
+  </section>
+
+  <section class="info-contacto">
+    <h2><i class="fas fa-phone"></i> Contáctanos</h2>
+    <p>Atención en toda el área de Asunción y Gran Asunción e Interior</p>
+    <p><strong>Teléfono:</strong> (0992) 956 681</p>
+    <p><strong>Email:</strong> arceinformatica5@gmail.com</p>
+    <a href="https://wa.me/595992956681" class="boton-contacto"><i class="fab fa-whatsapp"></i> ¡Escríbenos por WhatsApp!</a>
+  </section>
+
+  <section class="formulario-contacto">
+  <h2><i class="fas fa-envelope"></i> Envíanos tu Consulta</h2>
+  <form id="contactoForm" action="https://formspree.io/f/mldneqny" method="POST">
+  <!-- campos del formulario -->
+  <label for="nombre">Nombre</label>
+  <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo" />
+
+  <label for="email">Correo electrónico</label>
+  <input type="email" id="email" name="email" required placeholder="tunombre@correo.com" />
+
+  <label for="mensaje">Mensaje</label>
+  <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Escribí tu consulta aquí..."></textarea>
+
+  <button type="submit">Enviar Mensaje</button>
+
+  <!-- mensaje oculto -->
+  <p id="mensajeEnviado" style="display: none; color: green; margin-top: 1rem; font-weight: bold;">
+    ¡Gracias por tu mensaje! Te responderemos pronto.
+  </p>
+</form>
+</section>
+
+  <footer>
+    <p>&copy; 2025 Servicio Técnico - Todos los derechos reservados - Aregua Paraguay</p>
+    <p><a href="mailto:arceinformatica5@gmail.com">@Soluciones Informática</a></p>
+  </footer>
+
+<script>
+  const form = document.getElementById("contactoForm");
+  const mensajeEnviado = document.getElementById("mensajeEnviado");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // evita el envío automático
+
+    const datos = new FormData(form);
+
+    fetch(form.action, {
+      method: form.method,
+      body: datos,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        mensajeEnviado.style.display = "block";  // muestra el mensaje
+        form.reset();                            // limpia el formulario
+        window.scrollTo({ top: 0, behavior: "smooth" }); // sube al inicio
+      } else {
+        alert("Hubo un error al enviar. Intentá de nuevo.");
+      }
+    }).catch(error => {
+      alert("Ocurrió un error. Intenta más tarde.");
+    });
+  });
+</script>
+</body>
+</html>
